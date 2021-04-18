@@ -62,25 +62,26 @@ class GroupTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support conditional editing of the table view.
+    
+    // метод canEditRowAt indexPath обозначает можем ли мы конкретную ячейку редактировать
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        if indexPath.row == 0 {
+            return false
+        }
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
+   
+    // удаление групп
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // удаляем группу из массива городов
+            myGroups.remove(at: indexPath.row)
+            // удаляем группу из таблицы
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+   
 
     /*
     // Override to support rearranging the table view.
