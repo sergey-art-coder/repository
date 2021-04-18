@@ -14,6 +14,11 @@
 		EC1290AC25EA477400661904 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1290AB25EA477400661904 /* Assets.xcassets */; };
 		EC1290AF25EA477400661904 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1290AD25EA477400661904 /* LaunchScreen.storyboard */; };
 		EC195FBB261A21CC00D9673C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC195FBA261A21CC00D9673C /* ProfileTableViewController.swift */; };
+		EC9F2983262C50DD006BF21F /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F2982262C50DD006BF21F /* FriendsTableViewController.swift */; };
+		EC9F2986262C548E006BF21F /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F2985262C548E006BF21F /* FriendsTableViewCell.swift */; };
+		EC9F2989262C5F07006BF21F /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F2988262C5F07006BF21F /* GroupTableViewController.swift */; };
+		ECB12D4B262CA123004406CE /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB12D4A262CA123004406CE /* GroupTableViewCell.swift */; };
+		ECB12D4E262CA489004406CE /* AllGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB12D4D262CA489004406CE /* AllGroupTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		EC1290AE25EA477400661904 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC1290B025EA477400661904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC195FBA261A21CC00D9673C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		EC9F2982262C50DD006BF21F /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		EC9F2985262C548E006BF21F /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		EC9F2988262C5F07006BF21F /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		ECB12D4A262CA123004406CE /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		ECB12D4D262CA489004406CE /* AllGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +76,29 @@
 				EC1290AB25EA477400661904 /* Assets.xcassets */,
 				EC1290AD25EA477400661904 /* LaunchScreen.storyboard */,
 				EC1290B025EA477400661904 /* Info.plist */,
+				EC9F2980262C4FA0006BF21F /* Friends */,
+				EC9F2981262C4FB8006BF21F /* Groups */,
 			);
 			path = "1|SergeyLyashenko";
+			sourceTree = "<group>";
+		};
+		EC9F2980262C4FA0006BF21F /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				EC9F2982262C50DD006BF21F /* FriendsTableViewController.swift */,
+				EC9F2985262C548E006BF21F /* FriendsTableViewCell.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		EC9F2981262C4FB8006BF21F /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				EC9F2988262C5F07006BF21F /* GroupTableViewController.swift */,
+				ECB12D4A262CA123004406CE /* GroupTableViewCell.swift */,
+				ECB12D4D262CA489004406CE /* AllGroupTableViewController.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,10 +171,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9F2989262C5F07006BF21F /* GroupTableViewController.swift in Sources */,
 				EC1290A725EA477300661904 /* LoginViewController.swift in Sources */,
 				EC1290A325EA477300661904 /* AppDelegate.swift in Sources */,
+				ECB12D4B262CA123004406CE /* GroupTableViewCell.swift in Sources */,
+				ECB12D4E262CA489004406CE /* AllGroupTableViewController.swift in Sources */,
 				EC195FBB261A21CC00D9673C /* ProfileTableViewController.swift in Sources */,
+				EC9F2986262C548E006BF21F /* FriendsTableViewCell.swift in Sources */,
 				EC1290A525EA477300661904 /* SceneDelegate.swift in Sources */,
+				EC9F2983262C50DD006BF21F /* FriendsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
