@@ -8,13 +8,14 @@
 import UIKit
 
 class GroupTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameGroupLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     // этот метод вызывается каждый раз когда подготавливаем ячейку к переиспользованию (чистим)
     override func prepareForReuse() {
         super.prepareForReuse()
         nameGroupLabel.text = ""
     }
-
+    
 }

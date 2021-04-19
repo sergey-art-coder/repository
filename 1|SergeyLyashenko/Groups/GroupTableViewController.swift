@@ -8,60 +8,63 @@
 import UIKit
 
 class GroupTableViewController: UITableViewController {
-
-    var myGroups = [String]()
+    
+    var myGroups = [Group]()
+    var seletedGroups: Group?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
-
+    
     // MARK: - Table view data source
     // количество секций
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     // количество ячеек в секции соответствует колличеству друзей
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myGroups.count
     }
-
+    
     // запонение ячеек
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // получить ячейку класса GroupTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupTableViewCell
-        // получаем нужного нам друга обращаясь к массиву друзей
+        // получаем нужную нам группу обращаясь к массиву групп
         let group = myGroups[indexPath.row]
-        cell.nameGroupLabel.text = group
+        cell.nameGroupLabel.text = group.name
+        cell.photoImageView.image = group.image
         return cell
     }
-  // возвращаемся на контроллер
+    // возвращаемся на контроллер
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         // Проверка по идентификатору верный ли переход с ячейки
         if segue.identifier == "addGroup",
-           // Проверяем то что источник в этом переходе это объект класса AllGroupTableViewController, если это так то забираем выбранный город
-            let sourceVC = segue.source as? AllGroupTableViewController, let selectedGroup = sourceVC.selectedGroup {
+           // Проверяем то что источник в этом переходе это объект класса AllGroupTableViewController, если это так то забираем выбранную группу город
+           let sourceVC = segue.source as? AllGroupTableViewController, let selectedGroup = sourceVC.selectedGroup {
             // Если нет группы в списке то добавляем выбранную группу
-                    if !myGroups.contains(selectedGroup) {
-                        myGroups.append(selectedGroup)
-                        // После добавления группы обновляем таблицу
-                        tableView.reloadData()
-                    }
+            if !myGroups.contains(selectedGroup) {
+                myGroups.append(selectedGroup)
+                // После добавления группы обновляем таблицу
+                tableView.reloadData()
+            }
         }
     }
-
+    
     /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
+    
     
     // метод canEditRowAt indexPath обозначает можем ли мы конкретную ячейку редактировать
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -71,7 +74,7 @@ class GroupTableViewController: UITableViewController {
         return true
     }
     
-   
+    
     // удаление групп
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -81,31 +84,31 @@ class GroupTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }    
     }
-   
-
+    
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

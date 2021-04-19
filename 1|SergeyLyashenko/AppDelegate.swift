@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  1|SergeyLyashenko
 //
-//  Created by Сергей Ляшенко on 27.02.2021.
+//  Created by Сергей Ляшенко on 19.04.2021.
 //
 
 import UIKit
@@ -33,4 +33,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 

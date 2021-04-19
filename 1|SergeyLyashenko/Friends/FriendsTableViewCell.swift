@@ -8,8 +8,9 @@
 import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameFriendLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     // этот метод вызывается каждый раз когда подготавливаем ячейку к переиспользованию (чистим)
     override func prepareForReuse() {

@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    let session = Session.instance //синглтон для хранения данных о текущей сессии
+    
     @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-
-    
     @IBOutlet weak var scrollView: UIScrollView!
     
     // Когда клавиатура появляется
@@ -59,11 +61,16 @@ class ViewController: UIViewController {
     // Добавим жест нажатия к UIScrollView
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Жест нажатия
+  
+        // клик по любому месту scrollView для скрытия клавиатуры - Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
-        // Присваиваем его UIScrollView
+        // присваиваем его UIScrollView
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+        // * делегаты для переноса фокуса на следующее поле ввода
+        self.loginField.delegate = self
+        self.passwordField.delegate = self
+        
     }
     
     // Напишем логику авторизации в метод нажатия кнопки
@@ -74,8 +81,8 @@ class ViewController: UIViewController {
     // Создаем метод который будет маркером для перехода назад (Unwind Segue)
     @IBAction func backToLogin (unwindSegue: UIStoryboardSegue) {
        // При выходе очищам логин и пароль
-        loginField.text = ""
-        passwordField.text = ""
+//        loginField.text = ""
+//        passwordField.text = ""
     }
     
     // Метод чтобы подтвердить или отменить переход, в UIViewController
