@@ -7,8 +7,13 @@
 
 import UIKit
 
+struct Group: Equatable {
+    var name: String
+    var image: UIImage
+}
+
 class AllGroupTableViewController: UITableViewController {
-    
+        
     var myGroups = [
         Group(name: "Swift для iOS", image: UIImage(named: "group2")!),
         Group(name: "Mobile Dev Jobs", image: UIImage(named: "group1")!),

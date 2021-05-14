@@ -19,3 +19,4 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
 }
+

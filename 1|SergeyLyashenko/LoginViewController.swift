@@ -8,9 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
-    
-    let session = Session.instance //синглтон для хранения данных о текущей сессии
+
     
     @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -80,9 +78,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Создаем метод который будет маркером для перехода назад (Unwind Segue)
     @IBAction func backToLogin (unwindSegue: UIStoryboardSegue) {
-       // При выходе очищам логин и пароль
-//        loginField.text = ""
-//        passwordField.text = ""
+   //     При выходе очищам логин и пароль
+        loginField.text = ""
+        passwordField.text = ""
     }
     
     // Метод чтобы подтвердить или отменить переход, в UIViewController

@@ -7,12 +7,19 @@
 
 import UIKit
 
+struct Friend {
+    var userName: String
+    var userAvatar: UIImage
+    var userPhotos: [UIImage]
+}
+
 class FriendsTableViewController: UITableViewController {
     var friends = [
-        Friend(name: "Иван", image: UIImage(named: "friend1")!),
-        Friend(name: "Степан", image: #imageLiteral(resourceName: "friend2")),
-        Friend(name: "Борисович", image: #imageLiteral(resourceName: "friend3"))
+        Friend(userName: "Иван", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Степан", userAvatar: #imageLiteral(resourceName: "friend2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Борисович", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
+    var selectedFriend: Friend?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +44,25 @@ class FriendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
         // получаем нужного нам друга обращаясь к массиву друзей
         let friend = friends[indexPath.row]
-        cell.nameFriendLabel.text = friend.name
-        cell.photoImageView.image = friend.image
+        cell.nameFriendLabel.text = friend.userName
+        cell.photoImageView.image = friend.userAvatar
         return cell
+    }
+    // сохраняем выбранный индекс в переменной selectedFriend и убираем выделения
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFriend = friends[indexPath.row]
+        performSegue(withIdentifier: "toPhotosFriend", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // вызываем подготовку к переходу
+        super.prepare(for: segue, sender: sender)
+        // проверяем что индитификатор называется "toPhotosFriend"
+        if segue.identifier == "toPhotosFriend",
+           // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController
+           let destination = segue.destination as? PhotosFriendCollectionViewController {
+            destination.friend = selectedFriend
+        }
     }
 
     /*
@@ -88,3 +111,4 @@ class FriendsTableViewController: UITableViewController {
      */
     
 }
+
