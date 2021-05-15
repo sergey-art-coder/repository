@@ -57,7 +57,7 @@ class AllGroupTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         // Выбираем группу (запоминаем)
         selectedGroup = myGroups[indexPath.row]
-        // Указываем то что нужно запустить переход "addGroup"
+        // указываем то что нужно запустить переход "addGroup"
         performSegue(withIdentifier: "addGroup", sender: self)
     }
     

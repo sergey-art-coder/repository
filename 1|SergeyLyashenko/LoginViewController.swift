@@ -103,8 +103,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
               // Получаем текст-пароль
               let password = passwordField.text else {  return false }
         
-        // Проверяем, верны ли они
-        if login == "admin" && password == "123456" {
+        // Проверяем, верны ли они (lowercased() - возвращает строчную версию строки)
+
+        if login == "Admin".lowercased() && password == "123456" {
             
             return true
 
@@ -113,7 +114,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return false
         }
     }
-    
+        
     func showLoginError() {
         
         // Создаем контроллер

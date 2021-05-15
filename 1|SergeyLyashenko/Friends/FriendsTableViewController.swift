@@ -14,17 +14,62 @@ struct Friend {
 }
 
 class FriendsTableViewController: UITableViewController {
+    
     var friends = [
-        Friend(userName: "Иван", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
-        Friend(userName: "Степан", userAvatar: #imageLiteral(resourceName: "friend2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
-        Friend(userName: "Борисович", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
+        Friend(userName: "Ivan Stepanovich", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Степан Петрович", userAvatar: #imageLiteral(resourceName: "friend2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Алексей Борисович", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Stepan Ivanovich", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Петр Степанович", userAvatar: #imageLiteral(resourceName: "group2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
+    
     var selectedFriend: Friend?
+    
+    // Search
+    var search = UISearchController()
+    
+    // создаем массив nameFiltered где будут отфильтроанные сообщения которые удовлетворяют условиям поиска
+    var nameFiltered = [Friend]()
+    
+    // функция filterName, где передаем текст с поля поиска
+    func filterName(text: String) {
+        // удаляем все отфильтрованне имена (чистим массив)
+        nameFiltered.removeAll()
+        // потом заполняем новыми данными
+        nameFiltered = friends.filter({ (Friend) -> Bool in
+            return Friend.userName.lowercased().contains(text.lowercased())
+        })
+    }
+    
+    // проверяем пустой ли searchBar, если пустой то показываем обычную таблицу
+    func searchBarIsEmpty() -> Bool {
+        return search.searchBar.text?.isEmpty ?? true
+    }
+    
+    // метод который показывает занимаемся ли мы поиском
+    func isSearch() -> Bool {
+        return search.isActive && !searchBarIsEmpty()
+    }
+    
+    // функция которая отправляет текст в filterName
+    func filterSearchFriend(text: String) {
+        filterName(text: text)
+        // перезагрузка таблицы
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // добавляем большой Navigation Bar
+        //        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+        //        
+        // добавляем строку поиска
+        search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        self.navigationItem.searchController = search
     }
     
     // MARK: - Table view data source
@@ -35,6 +80,10 @@ class FriendsTableViewController: UITableViewController {
     
     // количество ячеек в секции соответствует колличеству друзей
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isSearch() {
+            return nameFiltered.count
+        }
         return friends.count
     }
     
@@ -42,15 +91,28 @@ class FriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // получить ячейку класса FriendTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
+        
         // получаем нужного нам друга обращаясь к массиву друзей
-        let friend = friends[indexPath.row]
+        //let friend = friends[indexPath.row]
+        
+        var friend: Friend
+        
+        if isSearch() {
+            friend = nameFiltered[indexPath.row]
+        } else {
+            
+            friend = friends[indexPath.row]
+        }
+        
         cell.nameFriendLabel.text = friend.userName
         cell.photoImageView.image = friend.userAvatar
         return cell
     }
+    
     // сохраняем выбранный индекс в переменной selectedFriend и убираем выделения
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedFriend = friends[indexPath.row]
+        //selectedFriend = nameFiltered[indexPath.row]
         performSegue(withIdentifier: "toPhotosFriend", sender: self)
     }
     
@@ -64,51 +126,10 @@ class FriendsTableViewController: UITableViewController {
             destination.friend = selectedFriend
         }
     }
-
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+}
+extension FriendsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterSearchFriend(text: searchController.searchBar.text!)
+    }
 }
 
