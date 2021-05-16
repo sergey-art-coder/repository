@@ -15,7 +15,7 @@ struct Friend {
 
 class FriendsTableViewController: UITableViewController {
     
-    var friends = [
+    private var friends = [
         Friend(userName: "Ivan Stepanovich", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Степан Петрович", userAvatar: #imageLiteral(resourceName: "friend2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Алексей Борисович", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
@@ -24,64 +24,56 @@ class FriendsTableViewController: UITableViewController {
         Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
     
-    var selectedFriend: Friend?
-    
     // Search
-    var search = UISearchController()
     
     // создаем массив nameFiltered где будут отфильтроанные сообщения которые удовлетворяют условиям поиска
-    var nameFiltered = [Friend]()
+    private var nameFiltered = [Friend]()
     
-    // функция filterName, где передаем текст с поля поиска
-    func filterName(text: String) {
-        // удаляем все отфильтрованне имена (чистим массив)
-        nameFiltered.removeAll()
-        // потом заполняем новыми данными
-        nameFiltered = friends.filter({ (Friend) -> Bool in
-            return Friend.userName.lowercased().contains(text.lowercased())
-        })
-    }
+    private var searchController = UISearchController(searchResultsController: nil)
     
-    // проверяем пустой ли searchBar, если пустой то показываем обычную таблицу
-    func searchBarIsEmpty() -> Bool {
-        return search.searchBar.text?.isEmpty ?? true
+    // проверяем не является строка поиска пустой, если пустой то показываем обычную таблицу
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
     }
     
     // метод который показывает занимаемся ли мы поиском
-    func isSearch() -> Bool {
-        return search.isActive && !searchBarIsEmpty()
-    }
-    
-    // функция которая отправляет текст в filterName
-    func filterSearchFriend(text: String) {
-        filterName(text: text)
-        // перезагрузка таблицы
-        tableView.reloadData()
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // добавляем большой Navigation Bar
-        //        self.navigationController?.navigationBar.prefersLargeTitles = true
-        //        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
-        //        
-        // добавляем строку поиска
-        search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
+        /*
+         добавляем большой Navigation Bar
+         self.navigationController?.navigationBar.prefersLargeTitles = true
+         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+         */
+        
+        // setup the Search Controller (отображаем и настраиваем строку поиска в интерфейсе)
+        searchController.searchResultsUpdater = self
+        // переходим на PhotosFriendCollectionViewController тапая по отфильтрованым записям
+        searchController.obscuresBackgroundDuringPresentation = false
+        // задаем пользовательское название для строки поиска
+        searchController.searchBar.placeholder = "Поиск друзей"
+        // отобразим строку поиска на Navigation Bar
+        navigationItem.searchController = searchController
+        // отпускаем строку поиска при переходе на другой экран
+        definesPresentationContext = true
     }
     
     // MARK: - Table view data source
+    
     // количество секций
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    // количество ячеек в секции соответствует колличеству друзей
+    // передаем количество элементов нашего массива (количество ячеек в секции соответствует колличеству друзей)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isSearch() {
+        if isFiltering {
             return nameFiltered.count
         }
         return friends.count
@@ -93,14 +85,11 @@ class FriendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
         
         // получаем нужного нам друга обращаясь к массиву друзей
-        //let friend = friends[indexPath.row]
-        
         var friend: Friend
         
-        if isSearch() {
+        if isFiltering {
             friend = nameFiltered[indexPath.row]
         } else {
-            
             friend = friends[indexPath.row]
         }
         
@@ -111,25 +100,49 @@ class FriendsTableViewController: UITableViewController {
     
     // сохраняем выбранный индекс в переменной selectedFriend и убираем выделения
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedFriend = friends[indexPath.row]
-        //selectedFriend = nameFiltered[indexPath.row]
         performSegue(withIdentifier: "toPhotosFriend", sender: self)
     }
     
+    // метод через который мы переходим на PhotosFriendCollectionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // вызываем подготовку к переходу
+        //вызываем подготовку к переходу
         super.prepare(for: segue, sender: sender)
+        
         // проверяем что индитификатор называется "toPhotosFriend"
-        if segue.identifier == "toPhotosFriend",
-           // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController
-           let destination = segue.destination as? PhotosFriendCollectionViewController {
-            destination.friend = selectedFriend
+        if segue.identifier == "toPhotosFriend" {
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                
+                let friend: Friend
+                
+                if isFiltering {
+                    friend = nameFiltered[indexPath.row]
+                } else {
+                    friend = friends[indexPath.row]
+                }
+                
+                // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController и передаем тот или иной friend по соответствующему индексу строки
+                let detailVC = segue.destination as! PhotosFriendCollectionViewController
+                detailVC.friend = friend
+            }
         }
     }
 }
+
 extension FriendsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        filterSearchFriend(text: searchController.searchBar.text!)
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // функция filterContentForSearchText, где передаем текст с поля поиска (метод который занимается непосредственно фильтрацией контента, заполняем массив отфильтроваными данными из основного массива friends)
+    private func filterContentForSearchText(_ searchText: String) {
+        nameFiltered = friends.filter({ (friend: Friend) -> Bool in
+            // возвращаем отфильтрованые элементы
+            return friend.userName.lowercased().contains(searchText.lowercased())
+        })
+        
+        // перезагрузка таблицы после фильтрации контента
+        tableView.reloadData()
     }
 }
 

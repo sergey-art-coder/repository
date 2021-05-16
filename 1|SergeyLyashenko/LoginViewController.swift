@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-
+    
     
     @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Добавим жест нажатия к UIScrollView
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        
         // клик по любому месту scrollView для скрытия клавиатуры - Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
         // присваиваем его UIScrollView
@@ -73,12 +73,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Напишем логику авторизации в метод нажатия кнопки
     @IBAction func onButtonTapped(_ sender: Any) {
-
+        
     }
     
     // Создаем метод который будет маркером для перехода назад (Unwind Segue)
     @IBAction func backToLogin (unwindSegue: UIStoryboardSegue) {
-   //     При выходе очищам логин и пароль
+        //     При выходе очищам логин и пароль
         loginField.text = ""
         passwordField.text = ""
     }
@@ -96,7 +96,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Вернем результат
         return checkResult
     }
-        
+    
     func checkUserData() -> Bool {
         // Получаем текст логина
         guard let login = loginField.text,
@@ -104,17 +104,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
               let password = passwordField.text else {  return false }
         
         // Проверяем, верны ли они (lowercased() - возвращает строчную версию строки)
-
+        
         if login == "Admin".lowercased() && password == "123456" {
             
             return true
-
+            
         } else {
             
             return false
         }
     }
-        
+    
     func showLoginError() {
         
         // Создаем контроллер

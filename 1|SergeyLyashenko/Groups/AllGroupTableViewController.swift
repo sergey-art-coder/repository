@@ -13,7 +13,7 @@ struct Group: Equatable {
 }
 
 class AllGroupTableViewController: UITableViewController {
-        
+    
     var myGroups = [
         Group(name: "Swift для iOS", image: UIImage(named: "group2")!),
         Group(name: "Mobile Dev Jobs", image: UIImage(named: "group1")!),

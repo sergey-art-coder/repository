@@ -1,13 +1,11 @@
 //
 //  PhotosFriendCollectionViewController.swift
-//  3|SergeyLyashenko
+//  1|SergeyLyashenko
 //
 //  Created by Сергей Ляшенко on 14.05.2021.
 //
 
 import UIKit
-
-
 
 class PhotosFriendCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let reuseIdentifier = "PhotosFriendsCell"
@@ -17,15 +15,16 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
         super.viewDidLoad()
         // зададим отступы
         //        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        
+        // заголовок для Navigation Bar
+        title = friend.userName
     }
-    
     
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return friend.userPhotos.count
