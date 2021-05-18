@@ -24,6 +24,8 @@ class FriendsTableViewController: UITableViewController {
         Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
     
+    var selectedFriend: Friend?
+    
     // Search
     
     // создаем массив nameFiltered где будут отфильтроанные сообщения которые удовлетворяют условиям поиска
@@ -100,6 +102,8 @@ class FriendsTableViewController: UITableViewController {
     
     // сохраняем выбранный индекс в переменной selectedFriend и убираем выделения
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedFriend = friends[indexPath.row]
         performSegue(withIdentifier: "toPhotosFriend", sender: self)
     }
     
@@ -113,17 +117,17 @@ class FriendsTableViewController: UITableViewController {
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 
-                let friend: Friend
+                let selectedFriend: Friend
                 
                 if isFiltering {
-                    friend = nameFiltered[indexPath.row]
+                    selectedFriend = nameFiltered[indexPath.row]
                 } else {
-                    friend = friends[indexPath.row]
+                    selectedFriend = friends[indexPath.row]
                 }
                 
                 // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController и передаем тот или иной friend по соответствующему индексу строки
-                let detailVC = segue.destination as! PhotosFriendCollectionViewController
-                detailVC.friend = friend
+                guard let detailVC = segue.destination as? PhotosFriendCollectionViewController  else { return }
+                detailVC.photos = selectedFriend
             }
         }
     }

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="__SergeyLyashenko" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="__SergeyLyashenko" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,7 +197,7 @@
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <connections>
-                                    <outlet property="photosFrienndImage" destination="W7d-in-g7M" id="Epo-WW-TbE"/>
+                                    <outlet property="photosFrienndImage" destination="W7d-in-g7M" id="ppP-Vk-NOK"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -207,10 +207,84 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="MHG-uW-3wt"/>
+                    <connections>
+                        <segue destination="ZIN-Fi-CzU" kind="show" identifier="toFriendsPhotos" id="yxq-M9-iaX"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldp-hE-Nw9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3850.7246376811595" y="-739.28571428571422"/>
+        </scene>
+        <!--Фото-->
+        <scene sceneID="X4R-Xx-HRx">
+            <objects>
+                <viewController id="ZIN-Fi-CzU" customClass="FriendsPhotosViewController" customModule="__SergeyLyashenko" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="phs-Ji-lM3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nT0-oh-sKU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mjH-5T-pOO">
+                                    <size key="itemSize" width="300" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendsPhotosCell" id="YLo-pC-4WZ" customClass="FriendsPhotosCollectionViewCell" customModule="__SergeyLyashenko" customModuleProvider="target">
+                                        <rect key="frame" x="57" y="0.0" width="300" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8eg-wN-YGw">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group4" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-SB-P6s" customClass="photosFrienndImage">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="140" id="cMD-SN-0KA"/>
+                                                        <constraint firstAttribute="width" secondItem="cKk-SB-P6s" secondAttribute="height" multiplier="1:1" id="iw8-bV-SPX"/>
+                                                        <constraint firstAttribute="width" constant="140" id="qDb-v3-Klj"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cKk-SB-P6s" firstAttribute="leading" secondItem="8eg-wN-YGw" secondAttribute="leading" id="MzT-oo-oes"/>
+                                                <constraint firstAttribute="bottom" secondItem="cKk-SB-P6s" secondAttribute="bottom" id="arD-Xk-ZBM"/>
+                                                <constraint firstItem="cKk-SB-P6s" firstAttribute="top" secondItem="8eg-wN-YGw" secondAttribute="top" id="iQQ-Cx-VnW"/>
+                                                <constraint firstAttribute="trailing" secondItem="cKk-SB-P6s" secondAttribute="trailing" id="igU-hb-DBq"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="frienndPhotosImage" destination="cKk-SB-P6s" id="b4v-3v-Gyg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZIN-Fi-CzU" id="5E0-Bd-Z5n"/>
+                                    <outlet property="delegate" destination="ZIN-Fi-CzU" id="Epn-oA-tgK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7qZ-HM-W6i"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7qZ-HM-W6i" firstAttribute="trailing" secondItem="nT0-oh-sKU" secondAttribute="trailing" id="1c7-eA-HjR"/>
+                            <constraint firstItem="7qZ-HM-W6i" firstAttribute="bottom" secondItem="nT0-oh-sKU" secondAttribute="bottom" id="FBd-0C-pDi"/>
+                            <constraint firstItem="nT0-oh-sKU" firstAttribute="leading" secondItem="7qZ-HM-W6i" secondAttribute="leading" id="JyP-Ga-JgC"/>
+                            <constraint firstItem="nT0-oh-sKU" firstAttribute="top" secondItem="7qZ-HM-W6i" secondAttribute="top" id="Pna-1M-1mu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Фото" id="K1g-d2-qyy"/>
+                    <connections>
+                        <outlet property="collectionView" destination="nT0-oh-sKU" id="sfD-OS-Nta"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjn-jZ-UHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4670" y="-739"/>
         </scene>
         <!--Профиль-->
         <scene sceneID="ZVy-bq-AB7">
@@ -270,7 +344,7 @@
             </objects>
             <point key="canvasLocation" x="1113" y="425"/>
         </scene>
-        <!--Лента новостей-->
+        <!--Новости-->
         <scene sceneID="CyC-4J-0kw">
             <objects>
                 <tableViewController id="75Z-xI-q0e" sceneMemberID="viewController">
@@ -293,7 +367,7 @@
                             <outlet property="delegate" destination="75Z-xI-q0e" id="fGY-oE-vNv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Лента новостей" id="KyF-dw-92O"/>
+                    <navigationItem key="navigationItem" title="Новости" id="KyF-dw-92O"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pi5-Ef-zTO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -373,7 +447,7 @@
             </objects>
             <point key="canvasLocation" x="2083" y="1603"/>
         </scene>
-        <!--Группы-->
+        <!--Сообщества-->
         <scene sceneID="jWr-vf-11Q">
             <objects>
                 <tableViewController id="Huw-Wz-OWP" customClass="GroupTableViewController" customModule="__SergeyLyashenko" customModuleProvider="target" sceneMemberID="viewController">
@@ -423,7 +497,7 @@
                             <outlet property="delegate" destination="Huw-Wz-OWP" id="HB7-1H-rGM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Группы" id="Q3F-wD-AtP">
+                    <navigationItem key="navigationItem" title="Сообщества" id="Q3F-wD-AtP">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="zkC-gd-4Tr">
                             <connections>
                                 <segue destination="w3X-mw-pcA" kind="show" id="FXY-lf-0XW"/>
@@ -435,7 +509,7 @@
             </objects>
             <point key="canvasLocation" x="3034.7826086956525" y="63.616071428571423"/>
         </scene>
-        <!--Группы-->
+        <!--Все сообщества-->
         <scene sceneID="Jiz-Ig-Lll">
             <objects>
                 <tableViewController id="w3X-mw-pcA" customClass="AllGroupTableViewController" customModule="__SergeyLyashenko" customModuleProvider="target" sceneMemberID="viewController">
@@ -485,7 +559,7 @@
                             <outlet property="delegate" destination="w3X-mw-pcA" id="Mmm-lg-Odi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Группы" id="Qma-mg-4Cg">
+                    <navigationItem key="navigationItem" title="Все сообщества" id="Qma-mg-4Cg">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Z67-ep-TDE"/>
                     </navigationItem>
                     <connections>
