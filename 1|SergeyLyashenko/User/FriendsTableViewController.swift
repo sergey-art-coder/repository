@@ -17,7 +17,7 @@ class FriendsTableViewController: UITableViewController {
         Friend(userName: "Петр Степанович", userAvatar: #imageLiteral(resourceName: "group2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
-   
+    
     private var nameFiltered = [Friend]()
     var selectedFriend: Friend?
     let friendsCell = "FriendsCell"

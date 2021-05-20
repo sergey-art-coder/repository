@@ -56,6 +56,5 @@ class AllGroupTableViewController: UITableViewController {
         // указываем то что нужно запустить переход "addGroup"
         performSegue(withIdentifier: "addGroup", sender: self)
     }
-    
 }
 

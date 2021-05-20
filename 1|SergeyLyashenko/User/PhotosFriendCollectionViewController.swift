@@ -13,7 +13,7 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
     let toFriendPhoto = "toFriendPhoto"
     
     var photos: Friend!
-   // var selectedPhotos = [UIImage]()
+    // var selectedPhotos = [UIImage]()
     var selectedPhotos: [UIImage] = []
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
         
         // проверяем что индитификатор называется "toFriendPhoto"
         if segue.identifier == toFriendPhoto {
-   
+            
             guard let detailVC = segue.destination as? FriendPhotoViewControllerCollection else { return }
             
             detailVC.photosFriend.userPhotos = selectedPhotos

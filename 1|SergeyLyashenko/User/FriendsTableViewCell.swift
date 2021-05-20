@@ -17,6 +17,5 @@ class FriendsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         nameFriendLabel.text = ""
     }
-    
 }
 

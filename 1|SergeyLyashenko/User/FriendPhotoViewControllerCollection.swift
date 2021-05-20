@@ -23,7 +23,6 @@ class FriendPhotoViewControllerCollection: UIViewController {
         myCollectionView.dataSource = self
         myCollectionView.register(UINib(nibName: "FriendPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: friendPhotoCell)
     }
- 
 }
 
 extension FriendPhotoViewControllerCollection: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -49,6 +48,4 @@ extension FriendPhotoViewControllerCollection: UICollectionViewDelegate, UIColle
         
         return cell
     }
-    
-    
 }

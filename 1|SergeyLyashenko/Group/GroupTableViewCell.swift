@@ -17,5 +17,4 @@ class GroupTableViewCell: UITableViewCell {
         super.prepareForReuse()
         nameGroupLabel.text = ""
     }
-    
 }

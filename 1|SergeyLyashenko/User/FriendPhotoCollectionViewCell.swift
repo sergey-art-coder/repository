@@ -8,7 +8,7 @@
 import UIKit
 
 class FriendPhotoCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var myImageView: UIImageView!
     
     func setup() {
@@ -19,18 +19,18 @@ class FriendPhotoCollectionViewCell: UICollectionViewCell {
     func clearCell() {
         myImageView.image = nil
     }
-   
+    
     
     override func prepareForReuse() {
         clearCell()
     }
- 
+    
     
     func configure() {
-  
+        
     }
     
-      
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
