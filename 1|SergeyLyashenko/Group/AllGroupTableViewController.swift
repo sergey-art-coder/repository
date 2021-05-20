@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct Group: Equatable {
-    var name: String
-    var image: UIImage
-}
 
 class AllGroupTableViewController: UITableViewController {
     

@@ -9,8 +9,12 @@ import UIKit
 
 class PhotosFriendCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let reuseIdentifier = "PhotosFriendsCell"
+    let photosFriendsCell = "PhotosFriendsCell"
+    let toFriendPhoto = "toFriendPhoto"
+    
     var photos: Friend!
-    var selectedPhotos = [UIImage]()
+   // var selectedPhotos = [UIImage]()
+    var selectedPhotos: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +36,11 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosFriendsCell", for: indexPath) as! PhotosFriendCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: photosFriendsCell, for: indexPath) as? PhotosFriendCollectionViewCell else { return UICollectionViewCell() }
         
         
         let photo = photos.userPhotos[indexPath.item]
-        cell.photosFrienndImage.image = photo
+        cell.photosFriendImage.image = photo
         
         return cell
     }
@@ -51,9 +55,9 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
     }
     
     // сохраняем выбранный индекс в переменной selectedPhotos и убираем выделения
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedPhotos = [photos.userPhotos[indexPath.item]]
-        performSegue(withIdentifier: "toFriendsPhotos", sender: self)
+        performSegue(withIdentifier: toFriendPhoto, sender: self)
     }
     
     // метод через который мы переходим на FriendsPhotosViewController
@@ -61,18 +65,12 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
         //вызываем подготовку к переходу
         super.prepare(for: segue, sender: sender)
         
-        // проверяем что индитификатор называется "toFriendsPhotos"
-        if segue.identifier == "toFriendsPhotos" {
+        // проверяем что индитификатор называется "toFriendPhoto"
+        if segue.identifier == toFriendPhoto {
+   
+            guard let detailVC = segue.destination as? FriendPhotoViewControllerCollection else { return }
             
-            // индекс нажатой ячейки
-            if let indexPath = collectionView.indexPathsForSelectedItems?.first {
-                photos.userPhotos = selectedPhotos //фотки
-                photos.userPhotos = [photos.userPhotos[indexPath.item]] // indexPath[0][1] если не использовать ?.first выше
-            }
-            
-            guard let detailVC = segue.destination as? FriendsPhotosViewController else { return }
-            
-            detailVC.photos.userPhotos = selectedPhotos
+            detailVC.photosFriend.userPhotos = selectedPhotos
         }
     }
 }

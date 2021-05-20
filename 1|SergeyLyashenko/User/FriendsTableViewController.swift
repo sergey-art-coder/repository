@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct Friend {
-    var userName: String
-    var userAvatar: UIImage
-    var userPhotos: [UIImage]
-}
-
 class FriendsTableViewController: UITableViewController {
     
     private var friends = [
@@ -23,13 +17,16 @@ class FriendsTableViewController: UITableViewController {
         Friend(userName: "Петр Степанович", userAvatar: #imageLiteral(resourceName: "group2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
-    
+   
+    private var nameFiltered = [Friend]()
     var selectedFriend: Friend?
+    let friendsCell = "FriendsCell"
+    let toPhotosFriend = "toPhotosFriend"
+    
     
     // Search
     
     // создаем массив nameFiltered где будут отфильтроанные сообщения которые удовлетворяют условиям поиска
-    private var nameFiltered = [Friend]()
     
     private var searchController = UISearchController(searchResultsController: nil)
     
@@ -84,7 +81,7 @@ class FriendsTableViewController: UITableViewController {
     // запонение ячеек
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // получить ячейку класса FriendTableViewCell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: friendsCell, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
         
         // получаем нужного нам друга обращаясь к массиву друзей
         var friend: Friend
@@ -104,7 +101,7 @@ class FriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedFriend = friends[indexPath.row]
-        performSegue(withIdentifier: "toPhotosFriend", sender: self)
+        performSegue(withIdentifier: toPhotosFriend, sender: self)
     }
     
     // метод через который мы переходим на PhotosFriendCollectionViewController
@@ -113,7 +110,7 @@ class FriendsTableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
         
         // проверяем что индитификатор называется "toPhotosFriend"
-        if segue.identifier == "toPhotosFriend" {
+        if segue.identifier == toPhotosFriend {
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 

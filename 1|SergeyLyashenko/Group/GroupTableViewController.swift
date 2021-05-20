@@ -43,7 +43,7 @@ class GroupTableViewController: UITableViewController {
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         // Проверка по идентификатору верный ли переход с ячейки
         if segue.identifier == "addGroup",
-           // Проверяем то что источник в этом переходе это объект класса AllGroupTableViewController, если это так то забираем выбранную группу город
+           // Проверяем то что источник в этом переходе это объект класса AllGroupTableViewController, если это так то забираем выбранную группу 
            let sourceVC = segue.source as? AllGroupTableViewController, let selectedGroup = sourceVC.selectedGroup {
             // Если нет группы в списке то добавляем выбранную группу
             if !myGroups.contains(selectedGroup) {
