@@ -11,6 +11,7 @@ class PhotosFriendCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photosFriendImage: UIImageView!
     
+    
     func setup() {
         
     }

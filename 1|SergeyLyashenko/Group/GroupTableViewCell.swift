@@ -12,9 +12,31 @@ class GroupTableViewCell: UITableViewCell {
     @IBOutlet weak var nameGroupLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
-    // этот метод вызывается каждый раз когда подготавливаем ячейку к переиспользованию (чистим)
+    
+    func setup() {
+        
+    }
+    
+    
+    func clearCell() {
+        nameGroupLabel.text = nil
+        photoImageView.image = nil
+    }
+    
+    
     override func prepareForReuse() {
-        super.prepareForReuse()
-        nameGroupLabel.text = ""
+        clearCell()
+    }
+    
+    
+    func configure() {
+        
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+        clearCell()
     }
 }

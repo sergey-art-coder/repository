@@ -12,10 +12,33 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var nameFriendLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
-    // этот метод вызывается каждый раз когда подготавливаем ячейку к переиспользованию (чистим)
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        nameFriendLabel.text = ""
+    
+    func setup() {
+        
     }
+    
+    
+    func clearCell() {
+        nameFriendLabel.text = nil
+        photoImageView.image = nil
+    }
+    
+    
+    override func prepareForReuse() {
+        clearCell()
+    }
+    
+    
+    func configure() {
+        
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+        clearCell()
+    }
+    
 }
 
