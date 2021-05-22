@@ -105,7 +105,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Проверяем, верны ли они (lowercased() - возвращает строчную версию строки)
         
-        if login == "Admin".lowercased() && password == "123456" {
+        if login == "".lowercased() && password == "" {
             
             return true
             

@@ -11,10 +11,10 @@ class FriendsTableViewController: UITableViewController {
     
     private var friends = [
         Friend(userName: "Ivan Stepanovich", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
-        Friend(userName: "Степан Петрович", userAvatar: #imageLiteral(resourceName: "friend2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Степан Петрович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Алексей Борисович", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Stepan Ivanovich", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
-        Friend(userName: "Петр Степанович", userAvatar: #imageLiteral(resourceName: "group2"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Петр Степанович", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
     

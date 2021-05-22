@@ -35,11 +35,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VK" translatesAutoresizingMaskIntoConstraints="NO" id="NNz-Mn-LQ5" customClass="RoundedImageViev" customModule="__SergeyLyashenko" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VK" translatesAutoresizingMaskIntoConstraints="NO" id="NNz-Mn-LQ5" customClass="RoundedImageViev" customModule="__SergeyLyashenko" customModuleProvider="target">
                                         <rect key="frame" x="88.5" y="1" width="237" height="158"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="80"/>
+                                                <integer key="value" value="85"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
@@ -175,32 +175,58 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group4" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-1v-Vmo" customClass="RoundedImageViev" customModule="__SergeyLyashenko" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="2" width="40" height="40"/>
+                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="XY5-xa-cNH" customClass="ImageWithShadow" customModule="__SergeyLyashenko" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="2" width="40" height="40"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group4" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-1v-Vmo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="tMS-1v-Vmo" secondAttribute="height" multiplier="1:1" id="kYx-fW-7XZ"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="tMS-1v-Vmo" secondAttribute="height" multiplier="1:1" id="Ake-Mh-Yiw"/>
-                                                <constraint firstAttribute="width" secondItem="tMS-1v-Vmo" secondAttribute="height" multiplier="1:1" id="kYx-fW-7XZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="tMS-1v-Vmo" secondAttribute="bottom" id="TNG-yB-s5B"/>
+                                                <constraint firstItem="tMS-1v-Vmo" firstAttribute="leading" secondItem="XY5-xa-cNH" secondAttribute="leading" id="UhE-wT-hre"/>
+                                                <constraint firstAttribute="height" constant="40" id="ew2-Vp-ngR"/>
+                                                <constraint firstAttribute="width" constant="40" id="krg-Jm-SAD"/>
+                                                <constraint firstItem="tMS-1v-Vmo" firstAttribute="top" secondItem="XY5-xa-cNH" secondAttribute="top" id="sbX-OK-hqA"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="20"/>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="2" height="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="tMS-1v-Vmo" firstAttribute="top" secondItem="9IX-87-gzd" secondAttribute="top" constant="2" id="Al7-ca-pHe"/>
-                                        <constraint firstItem="tMS-1v-Vmo" firstAttribute="leading" secondItem="9IX-87-gzd" secondAttribute="leading" constant="8" id="D3K-fV-NvD"/>
-                                        <constraint firstAttribute="bottom" secondItem="tMS-1v-Vmo" secondAttribute="bottom" constant="2" id="QuL-pd-NKS"/>
-                                        <constraint firstItem="2xV-uy-EqK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tMS-1v-Vmo" secondAttribute="trailing" constant="8" symbolic="YES" id="aIz-15-Q6p"/>
+                                        <constraint firstItem="XY5-xa-cNH" firstAttribute="centerY" secondItem="9IX-87-gzd" secondAttribute="centerY" id="43Z-vW-IDN"/>
+                                        <constraint firstItem="XY5-xa-cNH" firstAttribute="centerX" secondItem="9IX-87-gzd" secondAttribute="centerX" constant="-173" id="50D-yl-45Q"/>
+                                        <constraint firstItem="2xV-uy-EqK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XY5-xa-cNH" secondAttribute="trailing" constant="8" symbolic="YES" id="ILK-Bq-gzZ"/>
                                         <constraint firstAttribute="bottom" secondItem="2xV-uy-EqK" secondAttribute="bottom" constant="4" id="rQR-hb-ND3"/>
                                         <constraint firstAttribute="trailing" secondItem="2xV-uy-EqK" secondAttribute="trailing" constant="16" id="ubU-bD-PQp"/>
                                         <constraint firstItem="2xV-uy-EqK" firstAttribute="top" secondItem="9IX-87-gzd" secondAttribute="top" constant="4" id="xlV-tl-sMJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstItem="tMS-1v-Vmo" firstAttribute="centerY" secondItem="KT8-yn-2Yl" secondAttribute="centerY" id="Lzz-Fx-SfP"/>
-                                    <constraint firstItem="tMS-1v-Vmo" firstAttribute="centerY" secondItem="KT8-yn-2Yl" secondAttribute="centerY" id="PV7-NF-1nq"/>
+                                    <constraint firstItem="tMS-1v-Vmo" firstAttribute="centerY" secondItem="KT8-yn-2Yl" secondAttribute="centerY" id="b31-l8-Mkf"/>
+                                    <constraint firstItem="tMS-1v-Vmo" firstAttribute="leading" secondItem="KT8-yn-2Yl" secondAttribute="leading" constant="14" id="bTZ-lD-862"/>
+                                    <constraint firstItem="XY5-xa-cNH" firstAttribute="leading" secondItem="KT8-yn-2Yl" secondAttribute="leading" constant="14" id="lAx-us-PbH"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="nameFriendLabel" destination="2xV-uy-EqK" id="BGG-dP-HNO"/>
@@ -244,12 +270,34 @@
                                     <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group4" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-in-g7M" customClass="photosFrienndImage">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group4" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-in-g7M" customClass="photosFrienndImage">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
+                                        <view contentMode="scaleAspectFill" semanticContentAttribute="spatial" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-nc-iZz" customClass="LikeButton" customModule="__SergeyLyashenko" customModuleProvider="target">
+                                            <rect key="frame" x="3" y="121" width="40" height="16"/>
+                                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                            <color key="tintColor" systemColor="systemPinkColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="Dlg-0s-Bve"/>
+                                                <constraint firstAttribute="height" constant="16" id="lCw-Dd-3Bz"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="likeImage" value="like"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="likesCount">
+                                                    <integer key="value" value="999"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="mHF-nc-iZz" secondAttribute="bottom" constant="3" id="12g-Es-5bl"/>
                                         <constraint firstAttribute="bottom" secondItem="W7d-in-g7M" secondAttribute="bottom" id="2VC-Ca-jxr"/>
+                                        <constraint firstItem="mHF-nc-iZz" firstAttribute="leading" secondItem="LBm-8F-WvC" secondAttribute="leading" constant="3" id="AEr-Pg-lda"/>
                                         <constraint firstItem="W7d-in-g7M" firstAttribute="leading" secondItem="LBm-8F-WvC" secondAttribute="leading" id="Nxg-Q5-TxA"/>
                                         <constraint firstAttribute="trailing" secondItem="W7d-in-g7M" secondAttribute="trailing" id="QOE-fE-x8P"/>
                                         <constraint firstItem="W7d-in-g7M" firstAttribute="top" secondItem="LBm-8F-WvC" secondAttribute="top" id="uWQ-gD-NKE"/>
@@ -593,17 +641,10 @@
             <point key="canvasLocation" x="3851" y="64"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="NNz-Mn-LQ5">
-            <size key="intrinsicContentSize" width="237" height="158"/>
-        </designable>
-        <designable name="tMS-1v-Vmo">
-            <size key="intrinsicContentSize" width="119" height="106"/>
-        </designable>
-    </designables>
     <resources>
         <image name="VK" width="237" height="158"/>
         <image name="group4" width="119" height="106"/>
+        <image name="like" width="32" height="32"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
@@ -613,6 +654,12 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

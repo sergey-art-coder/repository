@@ -12,6 +12,8 @@
 		EC1290AF25EA477400661904 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1290AD25EA477400661904 /* LaunchScreen.storyboard */; };
 		EC195FBB261A21CC00D9673C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC195FBA261A21CC00D9673C /* ProfileTableViewController.swift */; };
 		EC238B2126556D5400C1144D /* FriendPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC238B2026556D5400C1144D /* FriendPhotoViewController.swift */; };
+		EC4A96CA2659577100AF372A /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A96C92659577100AF372A /* LikeButton.swift */; };
+		EC6A552A2658E9E800962327 /* ImageWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A55292658E9E800962327 /* ImageWithShadow.swift */; };
 		EC98F6CB262D8B8F00E9126E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC98F6CA262D8B8F00E9126E /* AppDelegate.swift */; };
 		EC98F6CF262D8C0400E9126E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC98F6CE262D8C0400E9126E /* SceneDelegate.swift */; };
 		EC9F2983262C50DD006BF21F /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F2982262C50DD006BF21F /* FriendsTableViewController.swift */; };
@@ -23,7 +25,6 @@
 		ECB12D58262CD8AD004406CE /* PhotosFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB12D57262CD8AD004406CE /* PhotosFriendCollectionViewCell.swift */; };
 		ECC5037B265582FA0021BBC4 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5037A265582FA0021BBC4 /* Friends.swift */; };
 		ECC5037E265583490021BBC4 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5037D265583490021BBC4 /* Groups.swift */; };
-		ECDCBBD82657DEEC001FE255 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDCBBD72657DEEC001FE255 /* RoundedImageView.swift */; };
 		ECE0EA5F26569C9400CF92EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECE0EA5E26569C9400CF92EE /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,8 @@
 		EC1290B025EA477400661904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC195FBA261A21CC00D9673C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		EC238B2026556D5400C1144D /* FriendPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoViewController.swift; sourceTree = "<group>"; };
+		EC4A96C92659577100AF372A /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		EC6A55292658E9E800962327 /* ImageWithShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithShadow.swift; sourceTree = "<group>"; };
 		EC98F6CA262D8B8F00E9126E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC98F6CE262D8C0400E9126E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EC9F2982262C50DD006BF21F /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +49,6 @@
 		ECB12D57262CD8AD004406CE /* PhotosFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECC5037A265582FA0021BBC4 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		ECC5037D265583490021BBC4 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
-		ECDCBBD72657DEEC001FE255 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		ECE0EA5E26569C9400CF92EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +124,8 @@
 			children = (
 				ECC5037A265582FA0021BBC4 /* Friends.swift */,
 				ECC5037D265583490021BBC4 /* Groups.swift */,
-				ECDCBBD72657DEEC001FE255 /* RoundedImageView.swift */,
+				EC6A55292658E9E800962327 /* ImageWithShadow.swift */,
+				EC4A96C92659577100AF372A /* LikeButton.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -204,11 +207,12 @@
 				ECB12D58262CD8AD004406CE /* PhotosFriendCollectionViewCell.swift in Sources */,
 				ECB12D4B262CA123004406CE /* GroupTableViewCell.swift in Sources */,
 				EC98F6CB262D8B8F00E9126E /* AppDelegate.swift in Sources */,
+				EC6A552A2658E9E800962327 /* ImageWithShadow.swift in Sources */,
 				ECC5037E265583490021BBC4 /* Groups.swift in Sources */,
 				ECB12D4E262CA489004406CE /* AllGroupTableViewController.swift in Sources */,
 				EC195FBB261A21CC00D9673C /* ProfileTableViewController.swift in Sources */,
 				EC9F2986262C548E006BF21F /* FriendsTableViewCell.swift in Sources */,
-				ECDCBBD82657DEEC001FE255 /* RoundedImageView.swift in Sources */,
+				EC4A96CA2659577100AF372A /* LikeButton.swift in Sources */,
 				EC238B2126556D5400C1144D /* FriendPhotoViewController.swift in Sources */,
 				EC9F2983262C50DD006BF21F /* FriendsTableViewController.swift in Sources */,
 				ECB12D51262CCF86004406CE /* PhotosFriendCollectionViewController.swift in Sources */,
