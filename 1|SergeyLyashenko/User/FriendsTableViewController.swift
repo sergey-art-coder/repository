@@ -10,72 +10,179 @@ import UIKit
 class FriendsTableViewController: UITableViewController {
     
     private var friends = [
-        Friend(userName: "Ivan Stepanovich", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
-        Friend(userName: "Степан Петрович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
-        Friend(userName: "Алексей Борисович", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
-        Friend(userName: "Stepan Ivanovich", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
-        Friend(userName: "Петр Степанович", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
-        Friend(userName: "Андрей Борисович", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
+        Friend(userName: "Stepanov Ivan", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Петров Степан", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Борисов Алексей", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Ivanov Stepan", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Степаненко Игорь", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Борисов Андрей", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Иванов Иван", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Сидоров Виктор", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Корнеухов Степан", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Сидоров Сидор", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Petruch Petrucha", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Безруков Алексей", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Tobol Petro", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Ivachov Igor", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Иванов Иван", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Русский Констанотин", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Соломин Петр", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Собакин Мухтар", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Максимов Максим", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Володин Виктор", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Буряков Владимир", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Иванова Сара", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Прилука Павел", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
+        Friend(userName: "Собакин Алексей", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
     ]
     
-    private var nameFiltered = [Friend]()
-    var selectedFriend: Friend?
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let friendsCell = "FriendsCell"
     let toPhotosFriend = "toPhotosFriend"
     
+    var selectedFriend: Friend?
     
-    // Search
+    //эталонный массив с именами для сравнения при поиске
+    var perfectArrayWithNames: [String] = []
     
-    // создаем массив nameFiltered где будут отфильтроанные сообщения которые удовлетворяют условиям поиска
+    // массив с именами меняется (при поиске) и используется в таблице
+    var namesListModifed: [String] = []
     
-    private var searchController = UISearchController(searchResultsController: nil)
+    var letersOfNames: [String] = []
     
-    // проверяем не является строка поиска пустой, если пустой то показываем обычную таблицу
-    private var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false }
-        return text.isEmpty
+    // создание массива из имен пользователей
+    func arrayOfUserNames() {
+        
+        // удаляем все элементы эталонного массива с именами
+        perfectArrayWithNames.removeAll()
+        
+        // получаем число элементов массива
+        for item in 0...(friends.count - 1) {
+            
+            // добавляем элементы в эталонный массив с именами
+            perfectArrayWithNames.append(friends[item].userName)
+        }
+        namesListModifed = perfectArrayWithNames
     }
     
-    // метод который показывает занимаемся ли мы поиском
-    private var isFiltering: Bool {
-        return searchController.isActive && !searchBarIsEmpty
+    // созданием массива из начальных букв имен пользователй по алфавиту
+    func sortNamesAlphabetically() {
+        
+        var letersSet = Set<Character>()
+        
+        // обнуляем массив на случай повторного использования
+        letersOfNames = []
+        
+        // создание сета из первых букв имени, чтобы не было повторов
+        for name in namesListModifed {
+            
+            // insert - вставка элемента в определенное место массива
+            letersSet.insert(name[name.startIndex])
+        }
+        
+        // заполнение массива строк из букв имен
+        // возвращам новый отсортированный массив, никак не изменяя старый
+        for leter in letersSet.sorted() {
+            letersOfNames.append(String(leter))
+        }
+    }
+    
+    func nameFriend(_ indexPath: IndexPath) -> String {
+        var namesRows = [String]()
+        for name in namesListModifed.sorted() {
+            if letersOfNames[indexPath.section].contains(name.first!) {
+                namesRows.append(name)
+            }
+        }
+        return namesRows[indexPath.row]
+    }
+    
+    func avatarFriend(_ indexPath: IndexPath) -> UIImage? {
+        for friend in friends {
+            let namesRows = nameFriend(indexPath)
+            if friend.userName.contains(namesRows) {
+                return friend.userAvatar
+            }
+        }
+        return nil
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        /*
-         добавляем большой Navigation Bar
-         self.navigationController?.navigationBar.prefersLargeTitles = true
-         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
-         */
+        searchBar.delegate = self
+        arrayOfUserNames()
+        sortNamesAlphabetically()
+    }
+    
+    // MARK: - searchBar
+    // поиск по именам
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        // setup the Search Controller (отображаем и настраиваем строку поиска в интерфейсе)
-        searchController.searchResultsUpdater = self
-        // переходим на PhotosFriendCollectionViewController тапая по отфильтрованым записям
-        searchController.obscuresBackgroundDuringPresentation = false
-        // задаем пользовательское название для строки поиска
-        searchController.searchBar.placeholder = "Поиск друзей"
-        // отобразим строку поиска на Navigation Bar
-        navigationItem.searchController = searchController
-        // отпускаем строку поиска при переходе на другой экран
-        definesPresentationContext = true
+        namesListModifed = searchText.isEmpty ? perfectArrayWithNames : perfectArrayWithNames.filter { (item: String) -> Bool in
+            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        // создаем заново массив заглавных букв для хедера
+        sortNamesAlphabetically()
+        tableView.reloadData()
+    }
+    
+    // отмена поиска (через кнопку Cancel)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true // показыть кнопку Cancel
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false // скрыть кнопку Cancel
+        searchBar.text = nil
+        arrayOfUserNames() // возвращаем массив имен
+        sortNamesAlphabetically()  // создаем заново массив заглавных букв для хедера
+        tableView.reloadData() //обновить таблицу
+        searchBar.resignFirstResponder() // скрыть клавиатуру
     }
     
     // MARK: - Table view data source
     
     // количество секций
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // return 1
+        return letersOfNames.count
+        
     }
     
+    // настройка хедера ячеек и добавление букв в него
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3) // прозрачность только хедера
+        
+        let leter: UILabel = UILabel(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
+        leter.textColor = UIColor.black.withAlphaComponent(0.5)  // прозрачность только надписи
+        leter.text = letersOfNames[section]
+        leter.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
+        header.addSubview(leter)
+        
+        return header
+    }
+    
+    // список букв для навигации (справа контрол)
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return letersOfNames
+    }
     // передаем количество элементов нашего массива (количество ячеек в секции соответствует колличеству друзей)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isFiltering {
-            return nameFiltered.count
+        
+        var countOfRows = 0
+        // сравниваем массив букв и заглавные буквы каждого имени, выводим количество ячеек в соотвествии именам на отдельную букву
+        for name in namesListModifed {
+            if letersOfNames[section].contains(name.first!) {
+                countOfRows += 1
+            }
         }
-        return friends.count
+        return countOfRows
+        
     }
     
     // запонение ячеек
@@ -83,17 +190,9 @@ class FriendsTableViewController: UITableViewController {
         // получить ячейку класса FriendTableViewCell
         guard let cell = tableView.dequeueReusableCell(withIdentifier: friendsCell, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
         
-        // получаем нужного нам друга обращаясь к массиву друзей
-        var friend: Friend
+        cell.nameFriendLabel.text = nameFriend(indexPath)
+        cell.photoImageView.image = avatarFriend(indexPath)
         
-        if isFiltering {
-            friend = nameFiltered[indexPath.row]
-        } else {
-            friend = friends[indexPath.row]
-        }
-        
-        cell.nameFriendLabel.text = friend.userName
-        cell.photoImageView.image = friend.userAvatar
         return cell
     }
     
@@ -112,38 +211,13 @@ class FriendsTableViewController: UITableViewController {
         // проверяем что индитификатор называется "toPhotosFriend"
         if segue.identifier == toPhotosFriend {
             
-            if let indexPath = tableView.indexPathForSelectedRow {
-                
-                let selectedFriend: Friend
-                
-                if isFiltering {
-                    selectedFriend = nameFiltered[indexPath.row]
-                } else {
-                    selectedFriend = friends[indexPath.row]
-                }
-                
-                // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController и передаем тот или иной friend по соответствующему индексу строки
-                guard let detailVC = segue.destination as? PhotosFriendCollectionViewController  else { return }
-                detailVC.photos = selectedFriend
-            }
+            // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController и передаем тот или иной friend по соответствующему индексу строки
+            guard let detailVC = segue.destination as? PhotosFriendCollectionViewController  else { return }
+            detailVC.photos = selectedFriend
         }
     }
 }
 
-extension FriendsTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
+extension UITableViewController: UISearchBarDelegate {
     
-    // функция filterContentForSearchText, где передаем текст с поля поиска (метод который занимается непосредственно фильтрацией контента, заполняем массив отфильтроваными данными из основного массива friends)
-    private func filterContentForSearchText(_ searchText: String) {
-        nameFiltered = friends.filter({ (friend: Friend) -> Bool in
-            // возвращаем отфильтрованые элементы
-            return friend.userName.lowercased().contains(searchText.lowercased())
-        })
-        
-        // перезагрузка таблицы после фильтрации контента
-        tableView.reloadData()
-    }
 }
-

@@ -161,9 +161,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Поиск друзей" id="lEQ-sy-FmA">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendsCell" rowHeight="44" id="KT8-yn-2Yl" customClass="FriendsTableViewCell" customModule="__SergeyLyashenko" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KT8-yn-2Yl" id="9IX-87-gzd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -241,6 +246,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Друзья" id="U3c-76-hHq"/>
                     <connections>
+                        <outlet property="searchBar" destination="lEQ-sy-FmA" id="Jeu-Nw-OWn"/>
                         <segue destination="XpI-s2-AkK" kind="show" identifier="toPhotosFriend" id="GaQ-ux-Pfw"/>
                     </connections>
                 </tableViewController>
@@ -289,7 +295,7 @@
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="likeImage" value="like"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="likesCount">
-                                                    <integer key="value" value="999"/>
+                                                    <integer key="value" value="0"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>

@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageWithShadow: UIView {
-
+    
     // в переменных которые отвечают за настройки тени сделаем свойства которые настраиваются из storyboard
     // устанавливаем цыет тени
     @IBInspectable var shadowColor: UIColor = .black {
@@ -16,14 +16,14 @@ class ImageWithShadow: UIView {
             layer.shadowColor = shadowColor.cgColor
         }
     }
-
+    
     // устанавливаем прозрачность тени
     @IBInspectable var shadowOpacity: Float = 0.5 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }
     }
-
+    
     // устанавливаем размер тени
     @IBInspectable var shadowRadius: CGFloat = 8 {
         didSet {
@@ -47,11 +47,11 @@ class ImageWithShadow: UIView {
             setNeedsDisplay()
         }
     }
-
+    
     // cornerRadius - отвечает за закругление краев
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-           // masksToBounds - обрез контента картинки по ее размерам. Если cornerRadius > 0 то обрезаем картинку по краям, если равен нулю то не обрезаем картинку по краям
+            // masksToBounds - обрез контента картинки по ее размерам. Если cornerRadius > 0 то обрезаем картинку по краям, если равен нулю то не обрезаем картинку по краям
             imageView.layer.masksToBounds = cornerRadius > 0
             // установливаем новое значение
             imageView.layer.cornerRadius = cornerRadius
@@ -61,41 +61,25 @@ class ImageWithShadow: UIView {
     // создаем переменную imageView которая будет отвечать за картинку и проинициализируем
     var imageView = UIImageView()
     
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            commonInit()
-        }
-
-        required init?(coder: NSCoder) {
-            super.init(coder: coder)
-            commonInit()
-        }
-
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
     func commonInit() {
         //        // добавляем картинку как Subview в контейнер
-                addSubview(imageView)
+        addSubview(imageView)
         //        // для картинки указываем тип заполнения контента scaleAspectFill
         imageView.contentMode = .scaleAspectFill
-                //цвет ставим прозрачный (убираем фон)
+        //цвет ставим прозрачный (убираем фон)
         backgroundColor = .clear
     }
-
     
-    
-    
-    
-    
-    // метод для инициализации картинки
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // добавляем картинку как Subview в контейнер
-//        addSubview(imageView)
-//        // для картинки указываем тип заполнения контента scaleAspectFill
-//        imageView.contentMode = .scaleAspectFill
-//        //цвет ставим прозрачный (убираем фон)
-//        backgroundColor = .green
- //   }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         // размер imageView подравниваем под размер контейнера

@@ -9,12 +9,7 @@ import UIKit
 
 @IBDesignable class LikeButton: UIControl {
     
-    // свойство которое отвечает за количество лайков (когда меняется значение обновляем текст)
-    @IBInspectable var likesCount: Int = 0 {
-        didSet {
-            updateLabelText()
-        }
-    }
+    var likesCount: Int = 999
     
     // картинка для лайка
     @IBInspectable var likeImage: UIImage? = nil {
@@ -23,7 +18,7 @@ import UIKit
         }
     }
     // контейнер
-    private var stackView:UIStackView!
+    private var stackView: UIStackView!
     // Label для счетчика
     private var countLabel: UILabel!
     // лайк
@@ -61,16 +56,8 @@ import UIKit
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
-        // настраиваем цвета
         updateSelectionState()
     }
-    
-//    private func updateLabelText() {
-//        let additionalLikes = isSelected ? 1 : 0
-//        let totalLikes = likesCount + additionalLikes
-//        countLabel.text = "\(totalLikes)"
-//    }
-    
     
     private func updateLabelText() {
         let additionalLikes = isSelected ? 1 : 0
@@ -78,9 +65,9 @@ import UIKit
         if totalLikes >= 1000 {
             countLabel.text = "1К"
         } else {
-        countLabel.text = "\(totalLikes)"
-    }
-    
+            countLabel.text = "\(totalLikes)"
+        }
+        
     }
     // функция которая обрабатывает изменение состояния выдиления (меняется цвет)
     private func updateSelectionState() {
@@ -94,7 +81,5 @@ import UIKit
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         isSelected = !isSelected
         updateSelectionState()
-        sendActions(for: .valueChanged)
     }
-
 }
