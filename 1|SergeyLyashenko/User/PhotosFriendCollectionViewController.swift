@@ -17,11 +17,11 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // зададим отступы
-        //        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        
-        // заголовок для Navigation Bar
-        title = photos.userName
+        /*  зададим отступы
+         collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+         
+         заголовок для Navigation Bar
+         title = photos.userName */
     }
     
     // MARK: UICollectionViewDataSource
@@ -71,6 +71,7 @@ class PhotosFriendCollectionViewController: UICollectionViewController, UICollec
                   let indexPath = self.collectionView.indexPathsForSelectedItems?.first else { return }
             selectedPhotos = [photos.userPhotos[indexPath.item]]
             detailVC.photos = selectedPhotos
+            
         }
     }
 }
