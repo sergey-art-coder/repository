@@ -72,9 +72,9 @@ class ImageWithShadow: UIView {
     }
     
     func commonInit() {
-        //        // добавляем картинку как Subview в контейнер
+        // добавляем картинку как Subview в контейнер
         addSubview(imageView)
-        //        // для картинки указываем тип заполнения контента scaleAspectFill
+        // для картинки указываем тип заполнения контента scaleAspectFill
         imageView.contentMode = .scaleAspectFill
         //цвет ставим прозрачный (убираем фон)
         backgroundColor = .clear
@@ -84,5 +84,37 @@ class ImageWithShadow: UIView {
         super.layoutSubviews()
         // размер imageView подравниваем под размер контейнера
         imageView.frame = bounds
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction]) {
+            self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        } completion: { completed in
+            
+        }
+    }
+    
+    override func touchesEnded (_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction]) {
+            self.transform = .identity
+        } completion: { completed in
+        }
+
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction]) {
+            self.transform = .identity
+        } completion: { completed in
+
+        }
     }
 }

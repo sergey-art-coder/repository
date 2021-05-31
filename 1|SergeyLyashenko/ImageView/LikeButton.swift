@@ -8,9 +8,12 @@
 import UIKit
 
 @IBDesignable class LikeButton: UIControl {
-    
-    var likesCount: Int = 999
-    
+    @IBInspectable var likesCount: Int = 0 {
+        didSet {
+      //  var likesCount: Int = 0
+            updateSelectionState()
+    }
+    }
     // картинка для лайка
     @IBInspectable var likeImage: UIImage? = nil {
         didSet {

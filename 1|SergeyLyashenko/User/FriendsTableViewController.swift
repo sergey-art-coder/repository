@@ -16,6 +16,7 @@ class FriendsTableViewController: UITableViewController {
         Friend(userName: "Ivanov Stepan", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Степаненко Игорь", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Борисов Андрей", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
+        Friend(userName: "Утренний Диман", userAvatar: #imageLiteral(resourceName: "friend2"), userPhotos: [#imageLiteral(resourceName: "friend3"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Иванов Иван", userAvatar: UIImage(named: "friend1")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "group4"), #imageLiteral(resourceName: "group2"), #imageLiteral(resourceName: "group3"), #imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Сидоров Виктор", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "group2")]),
         Friend(userName: "Корнеухов Степан", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
@@ -33,7 +34,7 @@ class FriendsTableViewController: UITableViewController {
         Friend(userName: "Буряков Владимир", userAvatar: #imageLiteral(resourceName: "friend3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Иванова Сара", userAvatar: UIImage(named: "friend2")!, userPhotos: [#imageLiteral(resourceName: "group5"),#imageLiteral(resourceName: "friend1"),#imageLiteral(resourceName: "Фото Борисович")]),
         Friend(userName: "Прилука Павел", userAvatar: #imageLiteral(resourceName: "group5"), userPhotos: [#imageLiteral(resourceName: "group2")]),
-        Friend(userName: "Собакин Алексей", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")])
+        Friend(userName: "Собакин Алексей", userAvatar: #imageLiteral(resourceName: "group3"), userPhotos: [#imageLiteral(resourceName: "Фото Борисович")]),
     ]
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -115,6 +116,8 @@ class FriendsTableViewController: UITableViewController {
         searchBar.delegate = self
         arrayOfUserNames()
         sortNamesAlphabetically()
+        // отпускаем строку поиска при переходе на другой экран
+        //definesPresentationContext = true
     }
     
     // MARK: - searchBar
@@ -152,15 +155,18 @@ class FriendsTableViewController: UITableViewController {
         
     }
     
-    // настройка хедера ячеек и добавление букв в него
+    // настройка хедера ячеек и добавление в него букв
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
-        header.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3) // прозрачность только хедера
-        
-        let leter: UILabel = UILabel(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
-        leter.textColor = UIColor.black.withAlphaComponent(0.5)  // прозрачность только надписи
+        // цвет и прозрачность хедера
+        header.backgroundColor = UIColor.red.withAlphaComponent(0.2)
+        // координаты размещения букв
+        let leter: UILabel = UILabel(frame: CGRect(x: 27, y: 5, width: 20, height: 20))
+        // цвет и прозрачность букв
+        leter.textColor = UIColor.blue.withAlphaComponent(1)
         leter.text = letersOfNames[section]
-        leter.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
+        // размер и толщина букв
+        leter.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
         header.addSubview(leter)
         
         return header
@@ -172,7 +178,6 @@ class FriendsTableViewController: UITableViewController {
     }
     // передаем количество элементов нашего массива (количество ячеек в секции соответствует колличеству друзей)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         
         var countOfRows = 0
         // сравниваем массив букв и заглавные буквы каждого имени, выводим количество ячеек в соотвествии именам на отдельную букву
@@ -214,6 +219,12 @@ class FriendsTableViewController: UITableViewController {
             // проверяем что контроллер на который мы переходим является контроллером типа PhotosFriendCollectionViewController и передаем тот или иной friend по соответствующему индексу строки
             guard let detailVC = segue.destination as? PhotosFriendCollectionViewController  else { return }
             detailVC.photos = selectedFriend
+            
+            // индекс нажатой ячейки
+            if let indexPath = tableView.indexPathForSelectedRow {
+                // заголовок для Navigation Bar
+                detailVC.title = nameFriend(indexPath) 
+            }
         }
     }
 }
