@@ -38,7 +38,6 @@
                                         <state key="normal" title="Войти"/>
                                         <connections>
                                             <action selector="onButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rsJ-R4-ID9"/>
-                                            <segue destination="eP3-OJ-rAC" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="f4D-vt-FDd"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Авторизация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLA-YW-Ggv">
@@ -163,6 +162,7 @@
                         <outlet property="loginField" destination="hKR-K4-nzx" id="ZgA-oj-Zjn"/>
                         <outlet property="passwordField" destination="imq-dg-P7c" id="9HX-cP-yKn"/>
                         <outlet property="scrollView" destination="a1A-8C-Qlf" id="PV0-Bx-d6x"/>
+                        <segue destination="eP3-OJ-rAC" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="5hm-Sf-acn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

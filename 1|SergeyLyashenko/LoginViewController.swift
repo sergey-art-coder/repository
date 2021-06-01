@@ -14,6 +14,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let login = "1"
+    
+    let password = "1"
+    
+    // Напишем логику авторизации в метод нажатия кнопки
+    @IBAction func onButtonTapped(_ sender: Any) {
+        // по нажатию на кнопку запускаем аниматор
+        dowloadIndicatorAnimate()
+        
+        // откладываем время выполнения (то что в замыкании (authAction) выполнится через некоторое время)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.authAction()
+        }
+    }
+    
+    // функция которая проверяет если логин правильный то выполняет переход
+    private func authAction() {
+        
+        if checkLogAndPass() {
+            self.performSegue(withIdentifier: "toMain", sender: self)
+        } else {
+            // Создаем контроллер
+            let alert = UIAlertController (title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+            
+            // Создаем кнопку для UIAlertController
+            let action = UIAlertAction (title: "ОК", style: .cancel) { (action) in
+                self.loginField.text = ""
+                self.passwordField.text = ""
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // Когда клавиатура появляется
     @objc func keyboardWasShown (notification: Notification) {
         
@@ -71,11 +105,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // Напишем логику авторизации в метод нажатия кнопки
-    @IBAction func onButtonTapped(_ sender: Any) {
-        
-    }
-    
     // Создаем метод который будет маркером для перехода назад (Unwind Segue)
     @IBAction func backToLogin (unwindSegue: UIStoryboardSegue) {
         //     При выходе очищам логин и пароль
@@ -83,51 +112,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordField.text = ""
     }
     
-    // Метод чтобы подтвердить или отменить переход, в UIViewController
-    override func shouldPerformSegue (withIdentifier identifer: String, sender: Any?) -> Bool {
-        // Проверяем данные
-        let checkResult = checkUserData()
-        
-        // Если данные не верны, покажем ошибку
-        if !checkResult {
-            showLoginError()
-        }
-        
-        // Вернем результат
-        return checkResult
-    }
-    
-    func checkUserData() -> Bool {
+    func checkLogAndPass() -> Bool {
         // Получаем текст логина
-        guard let login = loginField.text,
-              // Получаем текст-пароль
-              let password = passwordField.text else {  return false }
-        
-        // Проверяем, верны ли они (lowercased() - возвращает строчную версию строки)
-        
-        if login == "".lowercased() && password == "" {
-            
-            return true
-            
-        } else {
-            
-            return false
-        }
+        return loginField.text == login && passwordField.text == password
     }
     
-    func showLoginError() {
-        
-        // Создаем контроллер
-        let alter = UIAlertController (title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
-        
-        // Создаем кнопку для UIAlertController
-        let action = UIAlertAction (title: "ОК", style: .cancel, handler: nil)
-        
-        // Добавляем кнопку на UIAlertController
-        alter.addAction(action)
-        
-        // Показываем UIAlertController
-        present(alter, animated: true, completion: nil)
+    private func pointPrepare(cView: UIView, delay: Double) {
+        cView.backgroundColor = .black
+        cView.layer.contents = 2
+        cView.layer.masksToBounds = true
+        cView.alpha = 1
+        view.addSubview(cView)
+        UIView.animate(withDuration: 0.5, delay: delay, options: [.repeat, .autoreverse]) {
+            cView.alpha = 0
+            
+        }
+    }
+    let point1 = UIView(frame: CGRect(x: 200, y: 550, width: 4, height: 4))
+    let point2 = UIView(frame: CGRect(x: 205, y: 550, width: 4, height: 4))
+    let point3 = UIView(frame: CGRect(x: 210, y: 550, width: 4, height: 4))
+    
+    private func dowloadIndicatorAnimate() {
+        pointPrepare(cView: point1, delay: 0)
+        pointPrepare(cView: point2, delay: 0.2)
+        pointPrepare(cView: point3, delay: 0.4)
     }
 }
 
